@@ -6,11 +6,11 @@ using UnityEngine.SceneManagement;
 public class ApplePicker : MonoBehaviour
 {
     public GameObject basketPrefab;
-    public int numBuskets = 3;
-    public float basketBottomY = -0.001f;
-    public float basketSpacingY = 0.001f;
+    public int numBuskets;
+    public float basketBottomY;
+    public float basketSpacingY;
     public List<GameObject> basketList;
-    void Start()
+    private void Start()
     {
         basketList = new List<GameObject>();
         for (int i = 0; i< numBuskets; i++)

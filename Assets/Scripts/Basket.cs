@@ -6,7 +6,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Basket : MonoBehaviour
 {
-    public TextMeshProUGUI ScoreGT;
+    [SerializeField] private TextMeshProUGUI ScoreGT;
+    public int amountPoint;
     void Start()
     {
         GameObject scoreGO = GameObject.Find("ScoreCounter");
@@ -14,7 +15,7 @@ public class Basket : MonoBehaviour
         ScoreGT.text = "0";
     }
 
-    void Update()
+    private void Update()
     {
         Vector3 mousePos2D = Input.mousePosition;
         mousePos2D.z = -Camera.main.transform.position.z;
@@ -31,7 +32,7 @@ public class Basket : MonoBehaviour
         {
             Destroy(colliededWith);
             int score = int.Parse(ScoreGT.text);
-        score += 100;
+        score += amountPoint;
         ScoreGT.text = score.ToString();
         if (score > HighScore.score)
         {

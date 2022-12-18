@@ -8,24 +8,26 @@ using Random = UnityEngine.Random;
 public class AppleTree : MonoBehaviour
 {
     public GameObject applePrefab;
-    public float speed = 0.01f;
-    public float LeftAndRightEdge = 10f;
-    public float chanceToChangeDirections = 0.1f;
-    public float secondsBetweenAppleDrops = 1f;
+    public float speed ;
+    public float LeftAndRightEdge;
+    public float chanceToChangeDirections;
+    public float secondsBetweenAppleDrops;
+    public float speeding;
+    public float droppingApples;
 
-     void Start()
+    private void Start()
      {
-         Invoke("DropApple" , 1f);
+         Invoke("DropApple" , droppingApples);
      }
 
-     void DropApple()
+    private void DropApple()
      {
          GameObject apple = Instantiate<GameObject>(applePrefab);
          apple.transform.position = transform.position;
          Invoke("DropApple" , secondsBetweenAppleDrops);
      }
 
-    void FixedUpdate()
+    private  void FixedUpdate()
     {
         Vector3 pos = transform.position;
         pos.x += speed + Time.deltaTime;
@@ -38,7 +40,7 @@ public class AppleTree : MonoBehaviour
             speed = -Math.Abs(speed);
         }else if (Random.value < chanceToChangeDirections)
         {
-            speed += -0.01f;
+            speed += speeding;
         }
         
     }

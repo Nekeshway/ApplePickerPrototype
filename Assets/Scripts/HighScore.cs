@@ -6,9 +6,9 @@ using UnityEngine.UI;
 using TMPro;
 public class HighScore : MonoBehaviour
 {
-    static public int score = 1000;
+    static public int score;
   
-     void Awake()
+     private void Awake()
     {
         if (PlayerPrefs.HasKey("HighScore"))
         {
@@ -16,7 +16,7 @@ public class HighScore : MonoBehaviour
         }
         PlayerPrefs.SetInt("HighScore", score);
     }
-    void Update()
+     private void Update()
     {
         TextMeshProUGUI gt = this.GetComponent<TextMeshProUGUI>();
         gt.text = "High Score: " +score;

@@ -263,3 +263,5 @@ MonoBehaviour:
   LeftAndRightEdge: 20
   chanceToChangeDirections: 0.1
   secondsBetweenAppleDrops: 1
+  speeding: -0.01
+  droppingApples: 1

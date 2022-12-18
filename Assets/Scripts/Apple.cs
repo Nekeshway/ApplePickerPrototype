@@ -5,7 +5,7 @@ using UnityEngine;
 public class Apple : MonoBehaviour
 {
     public static float bottomY = -20f;
-    void Update()
+    private void Update()
     {
         if (transform.position.y < bottomY)
         {
