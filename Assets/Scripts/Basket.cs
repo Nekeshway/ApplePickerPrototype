@@ -6,10 +6,14 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Basket : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI ScoreGT;
+    private TextMeshProUGUI ScoreGT;
+    private HighScore _highScore;
     public int amountPoint;
+    [SerializeField] private float _sensitivity;
+
     void Start()
     {
+        _highScore = FindObjectOfType<HighScore>();
         GameObject scoreGO = GameObject.Find("ScoreCounter");
         ScoreGT = scoreGO.GetComponent<TextMeshProUGUI>();
         ScoreGT.text = "0";
@@ -21,8 +25,8 @@ public class Basket : MonoBehaviour
         mousePos2D.z = -Camera.main.transform.position.z;
         Vector3 mousePos3D = Camera.main.ScreenToWorldPoint(mousePos2D);
         Vector3 pos = this.transform.position;
-        pos.x = mousePos2D.x;
-        this.transform.position = pos;
+        pos.x = mousePos3D.x;
+        this.transform.position = Vector3.Lerp(transform.position,pos,_sensitivity * Time.fixedDeltaTime);
     }
 
     private void OnCollisionEnter(Collision coll)
@@ -38,7 +42,9 @@ public class Basket : MonoBehaviour
         {
             HighScore.score = score;
         }
-    }
+
+        _highScore.UpdateScore();
+        }
 }
     
 }

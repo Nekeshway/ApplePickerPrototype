@@ -773,6 +773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d8d7d5bc97496e4cb99641ee7340f61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _textMeshPro: {fileID: 2116596672}
 --- !u!1001 &974519628686413620
 PrefabInstance:
   m_ObjectHideFlags: 0
